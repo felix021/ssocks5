@@ -41,12 +41,6 @@ class XSocket(gevent.socket.socket):
         data = struct.pack(fmt, *args)
         return self.sendall(data)
 
-    def recv(self, length, *args):
-        return super(XSocket, self).recv(length, *args)
-
-    def sendall(self, data, flags = 0):
-        return super(XSocket, self).sendall(data, flags)
-
     def forward(self, dest):
         try:
             while True:
@@ -54,16 +48,12 @@ class XSocket(gevent.socket.socket):
                 if not data:
                     break
                 dest.sendall(data)
-        #except IOError, e: pass
         finally:
             self.close()
             dest.close()
 
 
 class SocksServer(StreamServer):
-    def __init__(self, listener, **kwargs):
-        StreamServer.__init__(self, listener, **kwargs)
-
     def handle(self, sock, addr):
         print 'connection from %s:%s' % addr
 
