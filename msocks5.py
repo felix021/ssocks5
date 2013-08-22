@@ -56,7 +56,6 @@ class XSocket(gevent.socket.socket):
                 dest.sendall(data)
         #except IOError, e: pass
         finally:
-            print 'connection closed'
             self.close()
             dest.close()
 
@@ -103,8 +102,6 @@ class SocksServer(StreamServer):
         else:
             src.pack('!BBBBIH', 0x05, 0x07, 0x00, 0x01, 0, 0)
             return
-
-        print 'after step2'
 
         try:
             dest = XSocket(addr = (hostip, port))
