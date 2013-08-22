@@ -1,3 +1,4 @@
-For license, please refer to
+msocks5.py: totally public.
 
-https://github.com/clowwindy/shadowsocks/blob/master/LICENSE
+
+ssocks5.py: please refer to [license of shadowsocks](https://github.com/clowwindy/shadowsocks/blob/master/LICENSE)
